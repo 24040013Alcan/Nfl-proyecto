@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Conferencias NFL</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            padding-top: 70px;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #111;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            transition: background-image 0.7s ease-in-out;
+            position: relative;
+            color: #f0f0f0;
+        }
+        .background-overlay {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 70px);
+            background: rgba(0, 0, 0, 0.65);
+            pointer-events: none;
+            z-index: 0;
+            transition: opacity 0.5s ease;
+        }
+        nav.navbar {
+            background-color: #0b3d91 !important;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #ffc107 !important;
+        }
+        .dropdown-menu {
+            background-color: #1a73e8;
+            border: none;
+            box-shadow: 0 4-12px rgba(0,0,0,0.4);
+        }
+        .dropdown-item {
+            color: #f8f9fa;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .dropdown-item:hover {
+            background-color: #ffc107;
+            color: #0b3d91;
+        }
+        form.d-flex input.form-control {
+            border-radius: 0.25rem;
+            border: none;
+            padding: 0.5rem 0.75rem;
+            font-weight: 500;
+        }
+        form.d-flex input.form-control:focus {
+            box-shadow: 0 0 5px #ffc107;
+            border-color: #ffc107;
+            outline: none;
+        }
+        form.d-flex button {
+            background-color: #ffc107;
+            border: none;
+            font-weight: 700;
+            color: #0b3d91;
+            transition: background-color 0.3s ease;
+        }
+        form.d-flex button:hover {
+            background-color: #e0a800;
+            color: #fff;
+        }
+        main.container.team-list {
+            position: relative;
+            max-width: 700px;
+            margin: 2rem auto 3rem auto;
+            background-color: rgba(15, 32, 64, 0.85);
+            padding: 2rem 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+            z-index: 5;
+            color: #f0f0f0;
+        }
+        h1.text-center {
+            font-weight: 900;
+            color: #ffc107;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+        }
+        h2 {
+            margin-top: 2rem;
+            color: #1a73e8;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+        }
+        .team-item {
+            padding: 0.5rem 0;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: color 0.3s ease;
+        }
+        .team-item a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+        }
+        .team-item a:hover {
+            color: #ffc107;
+        }
+        @media (max-width: 576px) {
+            form.d-flex {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            form.d-flex input, form.d-flex button {
+                width: 100%;
+            }
+            main.container.team-list {
+                margin: 1rem 1rem 2rem 1rem;
+                padding: 1.5rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg px-3">
+        <a class="navbar-brand dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Menú
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="index.html">Inicio</a></li>
+            <li><a class="dropdown-item" href="reglas.html">Reglas</a></li>
+            <li><a class="dropdown-item" href="tienda.html">Tienda</a></li>
+        </ul>
+        <div class="ms-auto">
+            <form class="d-flex" id="loginForm" novalidate>
+                <input class="form-control me-2" type="text" placeholder="Usuario" aria-label="Usuario" required />
+                <input class="form-control me-2" type="password" placeholder="Contraseña" aria-label="Contraseña" required />
+                <button class="btn" type="submit">Iniciar Sesión</button>
+            </form>
+        </div>
+    </nav>
+    <div class="background-overlay" id="backgroundOverlay"></div>
+    <main class="container team-list" role="main" aria-label="Lista de conferencias y equipos NFL">
+        <h1 class="text-center">Conferencias NFL</h1>
+
+        <section id="afc" aria-label="Conferencia AFC">
+            <h2>AFC EAST</h2>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/buffalo-bills-logo-transparent.png" tabindex="0">
+                <a href="buffalo-bills.html">Buffalo Bills</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/new-england-patriots-logo-transparent.png" tabindex="0">
+                <a href="new-england-patriots.html">New England Patriots</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/new-york-jets-logo-transparent.png" tabindex="0">
+                <a href="new-york-jets.html">New York Jets</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/miami-dolphins-logo-transparent.png" tabindex="0">
+                <a href="miami-dolphins.html">Miami Dolphins</a>
+            </div>
+
+            <h2>AFC NORTH</h2>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/baltimore-ravens-logo-transparent.png" tabindex="0">
+                <a href="baltimore-ravens.html">Baltimore Ravens</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/cincinnati-bengals-logo-transparent.png" tabindex="0">
+                <a href="cincinnati-bengals.html">Cincinnati Bengals</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/cleveland-browns-logo-transparent.png" tabindex="0">
+                <a href="cleveland-browns.html">Cleveland Browns</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/pittsburgh-steelers-logo-transparent.png" tabindex="0">
+                <a href="pittsburgh-steelers.html">Pittsburgh Steelers</a>
+            </div>
+
+            <h2>AFC SOUTH</h2>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/houston-texans-logo-transparent.png" tabindex="0">
+                <a href="houston-texans.html">Houston Texans</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/indianapolis-colts-logo-transparent.png" tabindex="0">
+                <a href="indianapolis-colts.html">Indianapolis Colts</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/jacksonville-jaguars-logo-transparent.png" tabindex="0">
+                <a href="jacksonville-jaguars.html">Jacksonville Jaguars</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/tennessee-titans-logo-transparent.png" tabindex="0">
+                <a href="tennessee-titans.html">Tennessee Titans</a>
+            </div>
+
+            <h2>AFC WEST</h2>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/denver-broncos-logo-transparent.png" tabindex="0">
+                <a href="denver-broncos.html">Denver Broncos</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/kansas-city-chiefs-logo-transparent.png" tabindex="0">
+                <a href="kansas-city-chiefs.html">Kansas City Chiefs</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/oakland-raiders-logo-transparent.png" tabindex="0">
+                <a href="las-vegas-raiders.html">Las Vegas Raiders</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/los-angeles-chargers-logo-transparent.png" tabindex="0">
+                <a href="los-angeles-chargers.html">Los Angeles Chargers</a>
+            </div>
+        </section>
+
+        <section id="nfc" aria-label="Conferencia NFC">
+            <h2>NFC NORTH</h2>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/chicago-bears-logo-transparent.png" tabindex="0">
+                <a href="chicago-bears.html">Chicago Bears</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/detroit-lions-logo-transparent.png" tabindex="0">
+                <a href="detroit-lions.html">Detroit Lions</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/minnesota-vikings-logo-transparent.png" tabindex="0">
+                <a href="minnesota-vikings.html">Minnesota Vikings</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/green-bay-packers-logo-transparent.png" tabindex="0">
+                <a href="green-bay-packers.html">Green Bay Packers</a>
+            </div>
+
+            <h2>NFC SOUTH</h2>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/new-orleans-saints-logo-transparent.png" tabindex="0">
+                <a href="new-orleans-saints.html">New Orleans Saints</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/tampa-bay-buccaneers-logo-transparent.png" tabindex="0">
+                <a href="tampa-bay-buccaneers.html">Tampa Bay Buccaneers</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/atlanta-falcons-logo-transparent.png" tabindex="0">
+                <a href="atlanta-falcons.html">Atlanta Falcons</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/carolina-panthers-logo-transparent.png" tabindex="0">
+                <a href="carolina-panthers.html">Carolina Panthers</a>
+            </div>
+
+            <h2>NFC WEST</h2>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/arizona-cardinals-logo-transparent.png" tabindex="0">
+                <a href="arizona-cardinals.html">Arizona Cardinals</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/los-angeles-rams-logo-transparent.png" tabindex="0">
+                <a href="los-angeles-rams.html">Los Angeles Rams</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/san-francisco-49ers-logo-transparent.png" tabindex="0">
+                <a href="san-francisco-49ers.html">San Francisco 49ers</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/seattle-seahawks-logo-transparent.png" tabindex="0">
+                <a href="seattle-seahawks.html">Seattle Seahawks</a>
+            </div>
+
+            <h2>NFC EAST</h2>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/new-york-giants-logo-transparent.png" tabindex="0">
+                <a href="new-york-giants.html">New York Giants</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/washington-commanders-logo-transparent.png" tabindex="0">
+                <a href="washington-commanders.html">Washington Commanders</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/philadelphia-eagles-logo-transparent.png" tabindex="0">
+                <a href="philadelphia-eagles.html">Philadelphia Eagles</a>
+            </div>
+            <div class="team-item" data-bg="https://cdn.freebiesupply.com/images/large/2x/dallas-cowboys-logo-transparent.png" tabindex="0">
+                <a href="dallas-cowboys.html">Dallas Cowboys</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const teamItems = document.querySelectorAll('.team-item');
+        const backgroundOverlay = document.getElementById('backgroundOverlay');
+
+        teamItems.forEach((item, index) => {
+            const teamLink = item.querySelector('a');
+            if (teamLink) {
+                teamLink.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+            }
+
+            item.addEventListener('mouseenter', () => {
+                const bgUrl = item.getAttribute('data-bg');
+                document.body.style.backgroundImage = `url(${bgUrl})`;
+                backgroundOverlay.style.opacity = 1 - (index / teamItems.length) * 0.7;
+            });
+
+            item.addEventListener('mouseleave', () => {
+                document.body.style.backgroundImage = '';
+                backgroundOverlay.style.opacity = 0.65;
+            });
+
+            item.addEventListener('focus', () => {
+                const bgUrl = item.getAttribute('data-bg');
+                document.body.style.backgroundImage = `url(${bgUrl})`;
+                backgroundOverlay.style.opacity = 0.4;
+            });
+
+            item.addEventListener('blur', () => {
+                document.body.style.backgroundImage = '';
+                backgroundOverlay.style.opacity = 0.65;
+            });
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Funcionalidad de inicio de sesión no implementada.');
+        });
+    </script>
+</body>
+</html>

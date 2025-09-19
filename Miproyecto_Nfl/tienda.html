@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tienda NFL</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      padding-top: 70px;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #111;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      color: #f0f0f0;
+      position: relative;
+    }
+    .background-overlay {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 70px);
+      background: rgba(0, 0, 0, 0.65);
+      pointer-events: none;
+      z-index: 0;
+    }
+    nav.navbar {
+      background-color: #0b3d91 !important;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      z-index: 10;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #ffc107 !important;
+    }
+    .dropdown-menu {
+      background-color: #1a73e8;
+      border: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+    .dropdown-item {
+      color: #f8f9fa;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    .dropdown-item:hover {
+      background-color: #ffc107;
+      color: #0b3d91;
+    }
+    form.d-flex input.form-control {
+      border-radius: 0.25rem;
+      border: none;
+      padding: 0.5rem 0.75rem;
+      font-weight: 500;
+    }
+    form.d-flex input.form-control:focus {
+      box-shadow: 0 0 5px #ffc107;
+      border-color: #ffc107;
+      outline: none;
+    }
+    form.d-flex button {
+      background-color: #ffc107;
+      border: none;
+      font-weight: 700;
+      color: #0b3d91;
+      transition: background-color 0.3s ease;
+    }
+    form.d-flex button:hover {
+      background-color: #e0a800;
+      color: #fff;
+    }
+    main.container.store-content {
+      position: relative;
+      max-width: 1200px;
+      margin: 2rem auto 3rem auto;
+      background-color: rgba(15, 32, 64, 0.85);
+      padding: 2rem 2.5rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+      z-index: 5;
+      color: #f0f0f0;
+    }
+    h1 {
+      font-weight: 900;
+      color: #ffc107;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+    }
+    .card {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(255, 193, 7, 0.8);
+    }
+    .card-img-top {
+      height: 180px;
+      object-fit: contain;
+      background-color: #f8f9fa;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      padding: 1rem;
+    }
+    .card-title {
+      color: #ffc107;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .card-text {
+      font-weight: 600;
+      color: #e0e0e0;
+      margin-bottom: 1rem;
+    }
+    .btn-primary {
+      background-color: #ffc107;
+      border: none;
+      color: #0b3d91;
+      font-weight: 700;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #e0a800;
+      color: #fff;
+    }
+    @media (max-width: 576px) {
+      form.d-flex {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      form.d-flex input, form.d-flex button {
+        width: 100%;
+      }
+      main.container.store-content {
+        margin: 1rem 1rem 2rem 1rem;
+        padding: 1.5rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar fixed-top navbar-expand-lg px-3">
+    <a class="navbar-brand dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Menú
+    </a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="index.html">Inicio</a></li>
+      <li><a class="dropdown-item" href="conferencias.html">Conferencias</a></li>
+      <li><a class="dropdown-item" href="reglas.html">Reglas</a></li>
+    </ul>
+
+    <div class="ms-auto">
+      <form class="d-flex" id="loginForm" novalidate>
+        <input class="form-control me-2" type="text" placeholder="Usuario" aria-label="Usuario" required />
+        <input class="form-control me-2" type="password" placeholder="Contraseña" aria-label="Contraseña" required />
+        <button class="btn" type="submit">Iniciar Sesión</button>
+      </form>
+    </div>
+  </nav>
+
+  <div class="background-overlay"></div>
+
+  <main class="container store-content" role="main" aria-label="Tienda de mercancía NFL">
+    <h1>Tienda de mercancía NFL</h1>
+    <div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
+      <!-- AFC EAST -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://cdn.freebiesupply.com/images/large/2x/kansas-city-chiefs-logo-transparent.png" class="card-img-top" alt="Kansas City Chiefs" />
+          <div class="card-body">
+            <h5 class="card-title">Camiseta Kansas City Chiefs</h5>
+            <p class="card-text">$50 USD</p>
+            <button class="btn btn-primary" type="button">Comprar</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://cdn.freebiesupply.com/images/large/2x/green-bay-packers-logo-transparent.png" class="card-img-top" alt="Green Bay Packers" />
+          <div class="card-body">
+            <h5 class="card-title">Gorra Green Bay Packers</h5>
+            <p class="card-text">$25 USD</p>
+            <button class="btn btn-primary" type="button">Comprar</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://cdn.freebiesupply.com/images/large/2x/seattle-seahawks-logo-transparent.png" class="card-img-top" alt="Seattle Seahawks" />
+          <div class="card-body">
+            <h5 class="card-title">Sudadera Seattle Seahawks</h5>
+            <p class="card-text">$60 USD</p>
+            <button class="btn btn-primary" type="button">Comprar</button>
+          </div>
+        </div>
+      </div>
+      <!-- Continúa con los demás equipos -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://cdn.freebiesupply.com/images/large/2x/buffalo-bills-logo-transparent.png" class="card-img-top" alt="Buffalo Bills" />
+          <div class="card-body">
+            <h5 class="card-title">Camiseta Buffalo Bills</h5>
+            <p class="card-text">$50 USD</p>
+            <button class="btn btn-primary" type="button">Comprar</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://cdn.freebiesupply.com/images/large/2x/new-england-patriots-logo-transparent.png" class="card-img-top" alt="New England Patriots" />
+          <div class="card-body">
+            <h5 class="card-title">Gorra New England Patriots</h5>
+            <p class="card-text">$25 USD</p>
+            <button class="btn btn-primary" type="button">Comprar</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://cdn.freebiesupply.com/images/large/2x/new-york-jets-logo-transparent.png" class="card-img-top" alt="New York Jets" />
+          <div class="card-body">
+            <h5 class="card-title">Sudadera New York Jets</h5>
+            <p class="card-text">$60 USD</p>
+            <button class="btn btn-primary" type="button">Comprar</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://cdn.freebiesupply.com/images/large/2x/miami-dolphins-logo-transparent.png" class="card-img-top" alt="Miami Dolphins" />
+          <div class="card-body">
+            <h5 class="card-title">Camiseta Miami Dolphins</h5>
+            <p class="card-text">$50 USD</p>
+            <button class="btn btn-primary" type="button">Comprar</button>
+          </div>
+        </div>
+      </div>
+      <!-- AFC NORTH -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://cdn.freebiesupply.com/images/large/2x/baltimore-ravens-logo-transparent.png" class="card-img-top" alt="Baltimore Ravens" />
+          <div class="card-body">
+            <h5 class="card-title">Gorra Baltimore Ravens</h5>
+            <p class="card-text">$25 USD</p>
+            <button class="btn btn-primary" type="button">Comprar</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://cdn.freebiesupply.com/images/large/2x/cincinnati-bengals-logo-transparent.png" class="card-img-top" alt="Cincinnati Bengals" />
+          <div class="card-body">
+            <h5 class="card-title">Sudadera Cincinnati Bengals</h5>
+            <p class="card-text">$60 USD</p>
+            <button class="btn btn-primary" type="button">Comprar</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://cdn.freebiesupply.com/images/large/2x/cleveland-browns-logo-transparent.png" class="card-img-top" alt="Cleveland Browns" />
+          <div class="card-body">
+            <h5 class="card-title">Camiseta Cleveland Browns</h5>
+            <p class="card-text">$50 USD</p>
+            <button class="btn btn-primary" type="button">Comprar</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://cdn.freebiesupply.com/images/large/2x/pittsburgh-steelers-logo-transparent.png" class="card-img-top" alt="Pittsburgh Steelers" />
+          <div class="card-body">
+            <h5 class="card-title">Gorra Pittsburgh Steelers</h5>
+            <p class="card-text">$25 USD</p>
+            <button class="btn btn-primary" type="button">Comprar</button>
+          </div>
+        </div>
+      </div>
+      <!-- AFC SOUTH -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://cdn.freebiesupply.com/images/large/2x/houston-texans-logo-transparent.png" class="card-img-top" alt="Houston Texans" />
+          <div class="card-body">
+            <h5 class="card-title">Sudadera Houston Texans</h5>
+            <p class="card-text">$60 USD</p>
+            <button class="btn btn-primary" type="button">Comprar</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://cdn.freebiesupply.com/images/large/2x/indianapolis-colts-logo-transparent.png" class="card-img-top" alt="Indianapolis Colts" />
+          <div class="card-body">
+            <h5 class="card-title">Camiseta Indianapolis Colts</h5>
+            <p class="card-text">$50 USD</p>
+            <button class="btn btn-primary" type="button">Comprar</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://cdn.freebiesupply.com/images/large/2x/jacksonville-jaguars-logo-transparent.png" class="card-img-top" alt="Jacksonville Jaguars" />
+          <div class="card-body">
+            <h5 class="card-title">Gorra Jacksonville Jaguars</h5>
+            <p class="card-text">$25 USD</p>
+            <button class="btn btn-primary" type="button">Comprar</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://cdn.freebiesupply.com/images/large/2x/tennessee-titans-logo-transparent.png" class="card-img-top" alt="Tennessee Titans" />
+          <div class="card-body">
+            <h5 class="card-title">Sudadera Tennessee Titans</h5>
+            <p class="card-text">$60 USD</p>
+            <button class="btn btn-primary" type="button">Comprar</button>
+          </div>
+        </div>
+      </div>
+      <!-- AFC WEST -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://cdn.freebiesupply.com/images/large/2x/denver-broncos-logo-transparent.png" class="card-img-top" alt="Denver Broncos" />
+          <div class="card-body">
+            <h5 class="card-title">Camiseta Denver Broncos</h5>
+            <p class="card-text">$50 USD</p>
+            <button class="btn btn-primary" type="button">Comprar</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://cdn.freebiesupply.com/images/large/2x/new-york-giants-logo-transparent.png" class="card-img-top" alt="New York Giants" />
+          <div class="card-body">
+            <h5 class="card-title">Jersey New York Giants</h5>
+            <p class="card-text">$75 USD</p>
+            <button class="btn btn-primary" type="button">Comprar</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://cdn.freebiesupply.com/images/large/2x/oakland-raiders-logo-transparent.png" class="card-img-top" alt="Las Vegas Raiders" />
+          <div class="card-body">
+            <h5 class="card-title">Sudadera Las Vegas Raiders</h5>
+            <p class="card-text">$60 USD</p>
+            <button class="btn btn-primary" type="button">Comprar</button>
+          </div>
+        </div>
+     
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Funcionalidad de inicio de sesión no implementada.');
+    });
+  </script>
+</body>
+</html>
