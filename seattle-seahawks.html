@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Seattle Seahawks - NFL</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding-top: 70px;
+            background-color: #111;
+            color: #f0f0f0;
+            position: relative;
+            min-height: 100vh;
+        }
+        .background-overlay {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 70px);
+            background: rgba(0, 0, 0, 0.65);
+            pointer-events: none;
+            z-index: 0;
+        }
+        nav.navbar {
+            background-color: #0b3d91 !important;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #ffc107 !important;
+        }
+        .dropdown-menu {
+            background-color: #1a73e8;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+        .dropdown-item {
+            color: #f8f9fa;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .dropdown-item:hover {
+            background-color: #ffc107;
+            color: #0b3d91;
+        }
+        form.d-flex input.form-control {
+            border-radius: 0.25rem;
+            border: none;
+            padding: 0.5rem 0.75rem;
+            font-weight: 500;
+        }
+        form.d-flex input.form-control:focus {
+            box-shadow: 0 0 5px #ffc107;
+            border-color: #ffc107;
+            outline: none;
+        }
+        form.d-flex button {
+            background-color: #ffc107;
+            border: none;
+            font-weight: 700;
+            color: #0b3d91;
+            transition: background-color 0.3s ease;
+        }
+        form.d-flex button:hover {
+            background-color: #e0a800;
+            color: #fff;
+        }
+        .team-hero {
+            position: relative;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #f0f0f0;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+            overflow: hidden;
+            margin: 2rem auto;
+            max-width: 1200px;
+            background-color: rgba(15, 32, 64, 0.85);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+            z-index: 5;
+            flex-direction: column;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+        .team-hero .logo {
+            max-width: 200px;
+            margin-bottom: 1rem;
+        }
+        .team-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            color: #002244; /* Seahawks Blue */
+        }
+        .team-hero p {
+            font-size: 1.5rem;
+            font-weight: 600;
+            max-width: 700px;
+            color: #69be28; /* Seahawks Green */
+        }
+        .content-section {
+            max-width: 900px;
+            margin: 0 auto 3rem auto;
+            background-color: rgba(15, 32, 64, 0.85);
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+            padding: 2rem 2.5rem;
+            color: #f0f0f0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            z-index: 5;
+            position: relative;
+        }
+        .content-section h2 {
+            color: #002244; /* Seahawks Blue */
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .btn-cta {
+            background-color: #69be28; /* Seahawks Green */
+            color: #002244;
+            font-weight: 700;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            border: none;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1.5rem;
+        }
+        .btn-cta:hover {
+            background-color: #a5acaf; /* Seahawks Gray */
+            color: #002244;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .team-hero h1 {
+                font-size: 2.5rem;
+            }
+            .team-hero p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg px-3">
+        <a class="navbar-brand dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Menú
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="conferencias.html">Conferencias</a></li>
+            <li><a class="dropdown-item" href="reglas.html">Reglas</a></li>
+            <li><a class="dropdown-item" href="tienda.html">Tienda</a></li>
+        </ul>
+        <div class="ms-auto">
+            <form class="d-flex" id="loginForm" novalidate>
+                <input class="form-control me-2" type="text" placeholder="Usuario" aria-label="Usuario" required />
+                <input class="form-control me-2" type="password" placeholder="Contraseña" aria-label="Contraseña" required />
+                <button class="btn" type="submit">Iniciar Sesión</button>
+            </form>
+        </div>
+    </nav>
+    <div class="background-overlay"></div>
+    <section class="team-hero" aria-label="Página del equipo Seattle Seahawks">
+        <img class="logo" src="https://cdn.freebiesupply.com/images/large/2x/seattle-seahawks-logo-transparent.png" alt="Logo de Seattle Seahawks" />
+        <h1>Seattle Seahawks</h1>
+        <p>¡El 12º hombre ruge!</p>
+    </section>
+    <section class="content-section" aria-label="Información del equipo">
+        <h2>Acerca de los Seahawks</h2>
+        <p>
+            Los <strong>Seattle Seahawks</strong> son un equipo de fútbol americano profesional de Seattle, Washington. Compiten en la National Football League (NFL) como miembros de la División Oeste de la National Football Conference (NFC). Fundados en 1976, los Seahawks han ganado un Super Bowl y son famosos por su defensa "Legion of Boom" y por el apoyo ensordecedor de su afición, conocida como el "12º Hombre".
+        </p>
+        <p>
+            Juegan en el <strong>Lumen Field</strong>, conocido por su increíble atmósfera. Los Seahawks tienen una de las bases de fanáticos más ruidosas de la liga, lo que les da una ventaja significativa en casa.
+        </p>
+        <a href="tienda.html" class="btn-cta" role="button">Visita la Tienda Oficial</a>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Funcionalidad de inicio de sesión no implementada.');
+        });
+    </script>
+</body>
+</html>
